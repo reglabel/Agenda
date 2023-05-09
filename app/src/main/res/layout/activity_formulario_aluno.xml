@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="8dp"
+    android:layout_gravity="center"
+    >
+    <EditText
+        android:id="@+id/activity_formulario_aluno_nome"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:minHeight="48dp"
+        android:hint="@string/novo_aluno_nome_hint"
+        android:inputType="textCapWords"
+        android:autofillHints="name"
+        android:textSize="20sp"
+        android:ems="10"
+        />
+
+    <EditText
+        android:id="@+id/activity_formulario_aluno_telefone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/novo_aluno_telefone_hint"
+        android:inputType="phone"
+        android:minHeight="48dp"
+        android:autofillHints="phone"
+        android:textSize="20sp"
+        android:ems="10"
+        />
+
+    <EditText
+        android:id="@+id/activity_formulario_aluno_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/novo_aluno_email_hint"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:autofillHints="emailAddress"
+        android:textSize="20sp"
+        android:ems="10"
+        />
+
+    <Button
+        android:id="@+id/activity_aluno_botao_salvar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/novo_aluno_botao_salvar_text"
+        android:minHeight="48dp"
+        android:textSize="20sp"
+        />
+</LinearLayout>

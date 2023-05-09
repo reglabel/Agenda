@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Agenda</string>
+    <string name="description_button_add_aluno">Adicionar aluno</string>
+    <string name="novo_aluno_nome_hint">Nome</string>
+    <string name="novo_aluno_telefone_hint">Telefone</string>
+    <string name="novo_aluno_email_hint">E-mail</string>
+    <string name="novo_aluno_botao_salvar_text">Salvar</string>
+</resources>
