@@ -62,6 +62,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int posicao, long id) {
                 Aluno alunoEscolhido = alunos.get(posicao);
+                Log.i("idAluno", String.valueOf(alunoEscolhido.getId()));
                 //Log.i("aluno", "" + posicao);
                 Intent irParaFormulario = new Intent(ListaAlunosActivity.this,
                         FormularioAlunoActivity.class);

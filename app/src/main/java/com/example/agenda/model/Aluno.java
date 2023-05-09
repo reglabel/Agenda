@@ -1,16 +1,13 @@
 package com.example.agenda.model;
-
 import android.os.Parcel;
 import android.os.Parcelable;
-
 import androidx.annotation.NonNull;
 
-import java.io.Serializable;
-
 public class Aluno implements Parcelable {
-    private final String nome;
-    private final String telefone;
-    private final String email;
+    private String nome;
+    private String telefone;
+    private String email;
+    private int id = 0;
 
     public Aluno(String nome, String telefone, String email) {
         this.nome = nome;
@@ -22,10 +19,11 @@ public class Aluno implements Parcelable {
         nome = p.readString();
         telefone = p.readString();
         email = p.readString();
+        id = p.readInt();
     }
 
-    public static final Parcelable.Creator<Aluno>
-            CREATOR = new Parcelable.Creator<Aluno>() {
+    public static final Creator<Aluno>
+            CREATOR = new Creator<Aluno>() {
 
         public Aluno createFromParcel(Parcel in) {
             return new Aluno(in);
@@ -64,5 +62,26 @@ public class Aluno implements Parcelable {
         parcel.writeString(nome);
         parcel.writeString(telefone);
         parcel.writeString(email);
+        parcel.writeInt(id);
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
