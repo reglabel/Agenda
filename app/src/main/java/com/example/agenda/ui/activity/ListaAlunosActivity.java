@@ -54,22 +54,24 @@ public class ListaAlunosActivity extends AppCompatActivity {
         ListView listaDeAlunos = findViewById(R.id.activity_lista_de_alunos_listview);
         final List<Aluno> alunos = dao.todos();
 
+        configuraAdapter(listaDeAlunos, alunos);
+        configuraListenerDeCliquePorItem(listaDeAlunos, alunos);
+    }
+
+    private void configuraListenerDeCliquePorItem(ListView listaDeAlunos, List<Aluno> alunos) {
+        listaDeAlunos.setOnItemClickListener((adapterView, view, posicao, id) -> {
+            Aluno alunoEscolhido = alunos.get(posicao);
+            Log.i("idAluno", String.valueOf(alunoEscolhido.getId()));
+            Intent irParaFormulario = new Intent(ListaAlunosActivity.this, FormularioAlunoActivity.class);
+            irParaFormulario.putExtra("aluno", alunoEscolhido);
+            startActivity(irParaFormulario);
+        });
+    }
+
+    private void configuraAdapter(ListView listaDeAlunos, List<Aluno> alunos) {
         listaDeAlunos.setAdapter(new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,
                 alunos));
-        listaDeAlunos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int posicao, long id) {
-                Aluno alunoEscolhido = alunos.get(posicao);
-                Log.i("idAluno", String.valueOf(alunoEscolhido.getId()));
-                //Log.i("aluno", "" + posicao);
-                Intent irParaFormulario = new Intent(ListaAlunosActivity.this,
-                        FormularioAlunoActivity.class);
-                //O objeto deve ser seriável (posso transformat em bytes)
-                irParaFormulario.putExtra("aluno", alunoEscolhido);
-                startActivity(irParaFormulario);
-            }
-        });
     }
 }

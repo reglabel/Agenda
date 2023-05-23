@@ -15,6 +15,8 @@ public class Aluno implements Parcelable {
         this.email = email;
     }
 
+    public Aluno() {}
+
     private Aluno(Parcel p) {
         nome = p.readString();
         telefone = p.readString();
@@ -83,5 +85,9 @@ public class Aluno implements Parcelable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public boolean temIdValido() {
+        return this.id > 0;
     }
 }
