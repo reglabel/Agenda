@@ -1,13 +1,12 @@
 package com.example.agenda.ui.activity;
 
+import static com.example.agenda.ui.activity.ConstantesActivities.CHAVE_ALUNO;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,13 +34,13 @@ public class ListaAlunosActivity extends AppCompatActivity {
         dao.salva(new Aluno("Fran", "86998466681", "fran@aluno.com"));
     }
 
-    private void abreFormularioAlunoActivity() {
+    private void abreFormularioModoInsereAluno() {
         startActivity(new Intent(this, FormularioAlunoActivity.class));
     }
 
     private void configuraFabNovoAluno() {
         FloatingActionButton botaoNovoAluno = findViewById(R.id.lista_alunos_fab_novo_aluno);
-        botaoNovoAluno.setOnClickListener(view -> abreFormularioAlunoActivity());
+        botaoNovoAluno.setOnClickListener(view -> abreFormularioModoInsereAluno());
     }
 
     @Override
@@ -62,10 +61,14 @@ public class ListaAlunosActivity extends AppCompatActivity {
         listaDeAlunos.setOnItemClickListener((adapterView, view, posicao, id) -> {
             Aluno alunoEscolhido = alunos.get(posicao);
             Log.i("idAluno", String.valueOf(alunoEscolhido.getId()));
-            Intent irParaFormulario = new Intent(ListaAlunosActivity.this, FormularioAlunoActivity.class);
-            irParaFormulario.putExtra("aluno", alunoEscolhido);
-            startActivity(irParaFormulario);
+            abreFormularioModoEditaAluno(alunoEscolhido);
         });
+    }
+
+    private void abreFormularioModoEditaAluno(Aluno aluno) {
+        Intent irParaFormulario = new Intent(ListaAlunosActivity.this, FormularioAlunoActivity.class);
+        irParaFormulario.putExtra(CHAVE_ALUNO, aluno);
+        startActivity(irParaFormulario);
     }
 
     private void configuraAdapter(ListView listaDeAlunos, List<Aluno> alunos) {
