@@ -2,15 +2,16 @@ package com.example.agenda.ui.activity;
 
 import static com.example.agenda.ui.activity.ConstantesActivities.CHAVE_ALUNO;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,8 +34,22 @@ public class FormularioAlunoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario_aluno);
         inicializacaoDosCampos();
-        configuraBotaoSalvar();
         carregaAluno();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_formulario_aluno_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int itemId = item.getItemId();
+        if(itemId == R.id.activity_formulario_aluno_menu_salvar){
+            finalizaFormulario();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void carregaAluno() {
@@ -55,26 +70,16 @@ public class FormularioAlunoActivity extends AppCompatActivity {
         campoEmail.setText(aluno.getEmail());
     }
 
-    private void configuraBotaoSalvar() {
-        Button botaoSalvar = findViewById(R.id.activity_aluno_botao_salvar);
-        botaoSalvar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finalizaFormulario();
-            }
-        });
-    }
-
     private void finalizaFormulario() {
-        //                Aluno alunoCriado = criaAluno();
-//                salva(alunoCriado);
-        preencheAluno();
-        if(aluno.temIdValido()){
-            dao.edita(aluno);
-        } else{
-            dao.salva(aluno);
+        if(this.validarDados()){
+            preencheAluno();
+            if(aluno.temIdValido()){
+                dao.edita(aluno);
+            } else{
+                dao.salva(aluno);
+            }
+            finish();
         }
-        finish();
     }
 
     private void inicializacaoDosCampos() {
@@ -103,8 +108,8 @@ public class FormularioAlunoActivity extends AppCompatActivity {
 
     private void customToastError(String mensagem){
         LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.custom_toast, (LinearLayout) findViewById(R.id.custom_toast_layout_id));
-        TextView text = (TextView) layout.findViewById(R.id.custom_toast_text_id);
+        View layout = inflater.inflate(R.layout.custom_toast, findViewById(R.id.custom_toast_layout_id));
+        TextView text = layout.findViewById(R.id.custom_toast_text_id);
         text.setText(mensagem);
         Toast toast = Toast.makeText(getApplicationContext(),
                 mensagem, Toast.LENGTH_SHORT);
@@ -120,5 +125,5 @@ public class FormularioAlunoActivity extends AppCompatActivity {
         aluno.setNome(nome);
         aluno.setTelefone(telefone);
         aluno.setEmail(email);
-    };
+    }
 }
