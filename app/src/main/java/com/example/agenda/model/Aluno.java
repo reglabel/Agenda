@@ -39,7 +39,7 @@ public class Aluno implements Parcelable {
     @NonNull
     @Override
     public String toString() {
-        return nome;
+        return nome + " - " + telefone;
     }
 
     public String getNome() {

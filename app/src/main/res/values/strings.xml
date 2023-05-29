@@ -4,7 +4,6 @@
     <string name="novo_aluno_nome_hint">Nome</string>
     <string name="novo_aluno_telefone_hint">Telefone</string>
     <string name="novo_aluno_email_hint">E-mail</string>
-    <string name="novo_aluno_botao_salvar_text">Salvar</string>
     <string name="remover">Remover</string>
     <string name="salvar">Salvar</string>
 </resources>

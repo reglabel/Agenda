@@ -16,33 +16,33 @@
             android:id="@+id/activity_formulario_aluno_nome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:autofillHints="name"
             android:ems="10"
             android:hint="@string/novo_aluno_nome_hint"
             android:inputType="textCapWords"
             android:minHeight="48dp"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:importantForAutofill="no" />
 
         <EditText
             android:id="@+id/activity_formulario_aluno_telefone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:autofillHints="phone"
             android:ems="10"
             android:hint="@string/novo_aluno_telefone_hint"
             android:inputType="phone"
             android:minHeight="48dp"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:importantForAutofill="no"/>
 
         <EditText
             android:id="@+id/activity_formulario_aluno_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:autofillHints="emailAddress"
             android:ems="10"
             android:hint="@string/novo_aluno_email_hint"
             android:inputType="textEmailAddress"
             android:minHeight="48dp"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:importantForAutofill="no"/>
     </LinearLayout>
 </ScrollView>
